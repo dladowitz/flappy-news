@@ -1,4 +1,14 @@
-angular.module('flapperNews', []).controller('MainCtrl', ['$scope', function($scope){
+flapperNews = angular.module('flapperNews', []);
+
+
+flapperNews.factory('posts', [function(){
+  var o = {
+    posts: []
+  };
+  return o;
+}]);
+
+flapperNews.controller('MainCtrl', ['$scope', 'posts', function($scope, posts){
 
   //Functions
   $scope.addPost = function(){
@@ -18,12 +28,7 @@ angular.module('flapperNews', []).controller('MainCtrl', ['$scope', function($sc
   //Run on load
   $scope.pageTitle = "Flapper News";
 
-  $scope.posts = [
-    {title: 'post 1', link: "http://www.google.com", upvotes: 5},
-    {title: 'post 2', link: "http://www.google.com", upvotes: 2},
-    {title: 'post 3', link: "http://www.google.com", upvotes: 15},
-    {title: 'post 4', link: "http://www.google.com", upvotes: 9},
-    {title: 'post 5', link: "http://www.google.com", upvotes: 4}
-  ];
+  $scope.posts = [];
+  //$scope.posts = [{title: 'Tigers', link: "http://www.google.com", upvotes: 10}];
 
 }]);
