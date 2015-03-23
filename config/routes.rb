@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'application#angular'
 
-  resources :post, only: [:create, :index, :show] do
+  resources :posts, only: [:create, :index, :show] do
     resources :comments, only: [:show, :create] do
       member do
         put '/upvotes' => 'commets#upvote'
