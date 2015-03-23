@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h3>
+    <a ng-show="post.link" href="{{post.link}}">
+      {{post.title}}
+    </a>
+        <span ng-hide="post.link">
+          {{post.title}}
+        </span>
+  </h3>
+</div>
+
+<form id="add-comment" ng-submit="addComment()" class="col-sm-9">
+  <h3>Add a comment</h3>
+  <div class="form-group">
+    <input type="text" rows="4" class="form-control" ng-model="body" placeholder="Why are people so crazy......"/>
+  </div>
+  <button class="btn btn-primary" type="submit">Add Comment</button>
+</form>
+<div>
+  <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+        <span class="col-sm-4">
+          <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
+          {{comment.upvotes}} - by {{comment.author}}
+        </span>
+        <span class="col-sm-8" style="font-size:20px;">
+          {{comment.body}}
+        </span>
+  </div>
+</div>
