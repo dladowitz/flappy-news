@@ -10,7 +10,7 @@
   <body ng-app="flapperNews">
     <div class="row">
       <div class="container">
-        <div class="content col-sm-6 col-sm-offset-3">
+        <div class="content col-sm-10 col-sm-offset-1">
           <ui-view></ui-view>
         </div>
       </div>
@@ -38,13 +38,16 @@
         </div>
         <button class="btn btn-primary" type="submit">Add Comment</button>
       </form>
-
-      <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-        <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
-          {{comment.upvotes}} - by {{comment.author}}
-        <span style="font-size:20px; margin-left:10px;">
-          {{comment.body}}
-        </span>
+      <div>
+        <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+          <span class="col-sm-4">
+            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(comment)"></span>
+            {{comment.upvotes}} - by {{comment.author}}
+          </span>
+          <span class="col-sm-8" style="font-size:20px;">
+            {{comment.body}}
+          </span>
+        </div>
       </div>
     </script>
 
