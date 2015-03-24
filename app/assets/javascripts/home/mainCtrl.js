@@ -6,14 +6,8 @@ angular.module('flapperNews').controller('MainCtrl', ['$scope', 'posts', functio
     if (!$scope.title || $scope.title === ''){
       return
     }
+    posts.create({ link: $scope.link, title: $scope.title, upvotes: 0});
 
-    $scope.posts.push({
-      title: $scope.title, upvotes: 0, link: $scope.link,
-      comments: [
-        {author: 'Hobbes', body: 'Tigers take over the world', upvotes: 20},
-        {author: 'Calvin', body: 'Children learn to ride tigers as transportation', upvotes: 23}
-      ]
-    });
     $scope.title = '';
     $scope.link = '';
   };

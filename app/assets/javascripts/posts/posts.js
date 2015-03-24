@@ -1,20 +1,21 @@
 //type of service object sharing persistant data across controllers
-angular.module('flapperNews').factory('posts', [function(){
+angular.module('flapperNews').factory('posts', ['$http', function($http){
   var o = {
-    posts: [{
-      title: 'Tigers', link: "http://www.google.com", upvotes: 10,
-      comments: [
-        {author: 'Hobbes', body: 'Tigers take over the world', upvotes: 20},
-        {author: 'Calvin', body: 'Children learn to ride tigers as transportation', upvotes: 23}
-      ]
-    },
-      {
-        title: 'Lions', link: "http://www.google.com", upvotes: 12,
-        comments: [
-          {author: 'Hobbes', body: 'Tigers take over the world', upvotes: 20},
-          {author: 'Calvin', body: 'Children learn to ride tigers as transportation', upvotes: 23}
-        ]
-      }]
+    posts: []
+  };
+
+  //Gets posts via json call. Overights posts
+  o.getAll = function(){
+    return $http.get('/posts.json').success(function(data){
+      angular.copy(data, o.posts);
+    });
+  };
+
+  // Create a post and push via json
+  o.create = function(post){
+    return $http.post('/posts.json', post).success(function(data){
+      o.posts.push(post);
+    });
   };
   return o;
 }]);

@@ -1,5 +1,7 @@
+$main_background_color: lightgray;
+
 .content {
-  background-color: lightgray;
+  background-color: $main_background_color;
   margin-top: 100px;
   padding: 30px 50px 40px 50px;
 }
@@ -20,4 +22,11 @@ form#add-post {
 
 .glyphicon-thumbs-up {
   cursor:pointer
+}
+
+ span {
+  a.comments {
+    font-size: 15px;
+    text-decoration: underline;
+  }
 }
