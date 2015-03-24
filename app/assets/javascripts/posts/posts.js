@@ -14,8 +14,15 @@ angular.module('flapperNews').factory('posts', ['$http', function($http){
   // Create a post and push via json
   o.create = function(post){
     return $http.post('/posts.json', post).success(function(data){
-      o.posts.push(post);
+      o.posts.push(data);
     });
   };
+
+  // Upvote
+  o.upvote = function(post){
+    $http.post('/posts/' + post.id + '/upvote.json').success(function(data){
+      post.upvotes += 1;
+    })
+  }
   return o;
 }]);

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    respond_wtih Post.find params[:id]
+    respond_with Post.find params[:id]
   end
 
   def upvote
@@ -23,7 +23,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    binding.pry
-    params.require(:post).permit(:title, :link)
+    params.require(:post).permit(:title, :link, :upvotes)
   end
 end

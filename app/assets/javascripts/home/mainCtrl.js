@@ -12,8 +12,8 @@ angular.module('flapperNews').controller('MainCtrl', ['$scope', 'posts', functio
     $scope.link = '';
   };
 
-  $scope.upvote = function(post){
-    post.upvotes += 1;
+  $scope.incrementUpvotes = function(post){
+    posts.upvote(post);
   }
 
   //Run on load
